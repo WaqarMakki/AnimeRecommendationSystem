@@ -1,6 +1,7 @@
 import pickle
 import streamlit as st
 from sklearn.metrics.pairwise import cosine_similarity
+from pyunpack import Archive
 
 def recommend(anime_name):
     try:
@@ -18,6 +19,10 @@ def recommend(anime_name):
 
     
     return recommendations
+
+src = r"C:\Users\Waqar Makki\OneDrive\Desktop\ARS\AnimeRecommendationSystem\vectors.zip"
+dest = r'C:\Users\Waqar Makki\PycharmProjects\AnimeRecommendationSystem'
+Archive(src).extractall(dest)
 
 data = pickle.load(open('/home/waqarmakki/Desktop/ars/data.pkl','rb'))
 vectors = pickle.load(open('/home/waqarmakki/Desktop/ars/vectors.pkl','rb'))
