@@ -20,8 +20,8 @@ def recommend(anime_name):
     
     return recommendations
 
-src = r"C:\Users\Waqar Makki\OneDrive\Desktop\ARS\AnimeRecommendationSystem\vectors.zip"
-dest = r'C:\Users\Waqar Makki\PycharmProjects\AnimeRecommendationSystem'
+src = "./vectors.zip"
+dest = './'
 Archive(src).extractall(dest)
 
 data = pickle.load(open('/home/waqarmakki/Desktop/ars/data.pkl','rb'))
