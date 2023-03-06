@@ -24,8 +24,8 @@ src = "./vectors.zip"
 dest = './'
 Archive(src).extractall(dest)
 
-data = pickle.load(open('/home/waqarmakki/Desktop/ars/data.pkl','rb'))
-vectors = pickle.load(open('/home/waqarmakki/Desktop/ars/vectors.pkl','rb'))
+data = pickle.load(open('data.pkl','rb'))
+vectors = pickle.load(open('vectors.pkl','rb'))
 
 st.header('Anime Recommender System')
 
