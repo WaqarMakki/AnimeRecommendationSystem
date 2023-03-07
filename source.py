@@ -29,9 +29,9 @@ def decompress_pickle(file):
     return vec
 
 
-data = pickle.load(open('./data.pkl','rb'))
+data = pickle.load(open('data.pkl','rb'))
 # vectors = pickle.load(open('vectors.pkl','rb'))
-vectors = decompress_pickle('./vectors.pbz2')
+vectors = decompress_pickle('vectors.pbz2')
 
 st.header('Anime Recommender System')
 
