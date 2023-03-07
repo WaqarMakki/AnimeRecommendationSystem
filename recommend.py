@@ -1,13 +1,16 @@
 import pickle
 import streamlit as st
 from sklearn.metrics.pairwise import cosine_similarity
-from pyunpack import Archive
+import bz2
+import _pickle as cPickle
 
 def recommend(anime_name):
-    try:
-        index = data.index[data['Title'] == anime_name][0]
-    except:
-        print("Anime Doesn't Exist")
+#     try:
+#         index = data.index[data['Title'] == anime_name][0]
+#     except:
+#         print("Anime Doesn't Exist")
+
+    index = data.index[data['Title'] == anime_name][0]
 
     sim = cosine_similarity(vectors, vectors[index].reshape((1, -1)))
 
@@ -16,16 +19,19 @@ def recommend(anime_name):
     data.sort_values(by=['Similarity'], ascending=False, inplace=True)
 
     recommendations = data['Title'][1:6].values
-
     
     return recommendations
 
-src = "./vectors.zip"
-dest = './'
-Archive(src).extractall(dest)
+
+def decompress_pickle(file):
+    vec = bz2.BZ2File(file, 'rb')
+    vec = cPickle.load(vec)
+    return vec
+
 
 data = pickle.load(open('data.pkl','rb'))
-vectors = pickle.load(open('vectors.pkl','rb'))
+# vectors = pickle.load(open('vectors.pkl','rb'))
+vectors = decompress_pickle('vectors.pbz2')
 
 st.header('Anime Recommender System')
 
